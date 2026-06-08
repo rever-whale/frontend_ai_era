@@ -176,9 +176,12 @@ AI는 구현 속도를 높여준다. 하지만 설계의 순서를 대신 정해
 
 ## 실습 lab
 
-이 장의 사례 연구는 `frontend-ai-era/labs/product-search-state`에 실행 가능한 TypeScript lab으로 연결되어 있다. 이 lab은 완성된 UI 앱이 아니라 상태 설계와 검증 계약을 작게 고정하는 실습이다.
+이 장의 사례 연구는 두 개의 lab으로 연결되어 있다.
 
-lab에서 다루는 항목은 다음과 같다.
+- `frontend-ai-era/labs/product-search-state`: 상태 설계와 검증 계약을 고정하는 TypeScript lab
+- `frontend-ai-era/labs/product-search-ui`: 브라우저에서 직접 열어볼 수 있는 정적 UI lab
+
+TypeScript lab에서 다루는 항목은 다음과 같다.
 
 - URL query parameter 파싱과 직렬화
 - 필터 변경 시 `page`를 1로 초기화하는 규칙
@@ -188,13 +191,15 @@ lab에서 다루는 항목은 다음과 같다.
 - 파생 상태를 저장하지 않고 계산하는 방식
 - 즐겨찾기 optimistic update와 rollback
 
-실행 방법은 다음과 같다.
+TypeScript lab 실행 방법은 다음과 같다.
 
 ```bash
 cd frontend-ai-era/labs/product-search-state
 ../../../prompt-harness/labs/contract-harness/node_modules/.bin/tsc -p tsconfig.json
 node --test test/*.test.mjs
 ```
+
+UI lab은 별도 설치 없이 `frontend-ai-era/labs/product-search-ui/index.html`을 브라우저에서 열면 된다. 이 화면에서는 검색 조건이 URL에 반영되는지, 필터 변경 시 페이지가 초기화되는지, 빈 상태와 API 실패 상태가 분리되는지, 즐겨찾기 실패 시 optimistic update가 rollback되는지 확인할 수 있다.
 
 ## 출처
 
@@ -204,3 +209,4 @@ node --test test/*.test.mjs
 - Testing Library docs: https://testing-library.com/docs/
 - TypeScript Handbook: https://www.typescriptlang.org/docs/
 - Local lab: `frontend-ai-era/labs/product-search-state`
+- Local lab: `frontend-ai-era/labs/product-search-ui`

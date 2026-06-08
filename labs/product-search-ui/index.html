@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Search UI Lab</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="pageHeader">
+        <div>
+          <p class="eyebrow">Frontend AI Era Lab</p>
+          <h1>상품 검색 상태 설계</h1>
+        </div>
+        <p class="summary">
+          URL 상태, 서버 상태, 빈/에러 상태, optimistic update를 브라우저에서 확인하는 정적 UI lab.
+        </p>
+      </header>
+
+      <section class="toolbar" aria-labelledby="filter-title">
+        <div class="toolbarHeader">
+          <h2 id="filter-title">검색 조건</h2>
+          <span id="filter-count" class="filterCount">0 filters</span>
+        </div>
+
+        <form id="search-form" class="filterGrid">
+          <label class="field">
+            <span>검색어</span>
+            <input id="q" name="q" type="search" autocomplete="off" placeholder="react, browser..." />
+          </label>
+
+          <label class="field">
+            <span>카테고리</span>
+            <select id="category" name="category">
+              <option value="">전체</option>
+              <option value="book">Book</option>
+              <option value="course">Course</option>
+              <option value="tool">Tool</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>정렬</span>
+            <select id="sort" name="sort">
+              <option value="latest">최신순</option>
+              <option value="popular">인기순</option>
+              <option value="price_asc">가격 낮은순</option>
+              <option value="price_desc">가격 높은순</option>
+            </select>
+          </label>
+
+          <label class="checkField">
+            <input id="fail-next" type="checkbox" />
+            <span>다음 요청 실패 시뮬레이션</span>
+          </label>
+        </form>
+      </section>
+
+      <section class="statusPanel" aria-live="polite">
+        <div>
+          <h2>상태 지도</h2>
+          <p id="state-map">URL 상태와 서버 상태를 읽는 중입니다.</p>
+        </div>
+        <button id="copy-url" type="button">URL 복사</button>
+      </section>
+
+      <section class="results" aria-labelledby="results-title">
+        <div class="resultsHeader">
+          <h2 id="results-title">검색 결과</h2>
+          <p id="result-meta">0 items</p>
+        </div>
+
+        <div id="feedback" class="feedback" hidden></div>
+        <div id="product-grid" class="productGrid"></div>
+
+        <nav class="pagination" aria-label="상품 페이지">
+          <button id="prev-page" type="button">이전</button>
+          <span id="page-label">1 / 1</span>
+          <button id="next-page" type="button">다음</button>
+        </nav>
+      </section>
+
+      <aside class="reviewNotes" aria-labelledby="review-title">
+        <h2 id="review-title">리뷰 포인트</h2>
+        <ul>
+          <li>검색 조건은 컴포넌트 내부가 아니라 URL query parameter가 단일 출처입니다.</li>
+          <li>필터가 바뀌면 페이지는 1로 초기화됩니다.</li>
+          <li>빈 결과와 API 실패는 서로 다른 상태로 표시됩니다.</li>
+          <li>즐겨찾기는 먼저 반영하고, 실패하면 이전 상태로 rollback합니다.</li>
+        </ul>
+      </aside>
+    </main>
+
+    <template id="product-card-template">
+      <article class="productCard">
+        <a class="productLink" href="#">
+          <img width="320" height="220" loading="lazy" alt="" />
+          <span class="categoryPill"></span>
+          <h3></h3>
+          <p class="price"></p>
+        </a>
+        <button class="favoriteButton" type="button"></button>
+      </article>
+    </template>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

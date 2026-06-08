@@ -75,12 +75,16 @@
 - MDN Web Docs: https://developer.mozilla.org/
 - web.dev: https://web.dev/
 - TypeScript Handbook: https://www.typescriptlang.org/docs/
+- Schedule estimation scenarios: `frontend-ai-era/src/15_estimation_in_ai_era.md`
+- Estimation workshop template: `frontend-ai-era/src/appendix_a_checklists.md`
 
 ## Local labs
 
 - Product search state lab: `frontend-ai-era/labs/product-search-state`
 - Lab source: `frontend-ai-era/labs/product-search-state/src/index.ts`
 - Lab tests: `frontend-ai-era/labs/product-search-state/test/product-search-state.test.mjs`
+- Product search UI lab: `frontend-ai-era/labs/product-search-ui`
+- UI lab entry: `frontend-ai-era/labs/product-search-ui/index.html`
 
 ## 출처
 
@@ -90,3 +94,4 @@
 - web.dev: https://web.dev/
 - Agile Alliance, Estimation: https://www.agilealliance.org/glossary/estimation/
 - Local lab: `frontend-ai-era/labs/product-search-state`
+- Local lab: `frontend-ai-era/labs/product-search-ui`

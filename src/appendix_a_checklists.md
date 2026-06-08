@@ -222,14 +222,127 @@ AI로 단축 가능한 작업:
 일정을 다시 산정할 시점:
 ```
 
+## AI 일정 산정 워크숍 템플릿
+
+15장의 일정 산정 논의를 팀 회의에서 사용할 때는 다음 30분 템플릿을 쓴다.
+
+```text
+회의 이름:
+
+기능/작업:
+
+참석자:
+- PM/기획:
+- 디자인:
+- 프론트엔드:
+- 백엔드:
+- QA/운영:
+
+0-5분. 완료 상태
+- 사용자가 볼 수 있는 완료 상태:
+- 이번 릴리즈에서 반드시 필요한 범위:
+- 이번 릴리즈에서 제외 가능한 범위:
+
+5-10분. AI로 빠르게 만들 수 있는 것
+- UI 초안:
+- 타입/계약 초안:
+- 테스트 초안:
+- 문서/체크리스트 초안:
+- 의사결정용 프로토타입인지, 제품 코드 후보인지:
+
+10-15분. 사람이 판단해야 하는 것
+- UX/정책:
+- 상태 위치:
+- API 계약:
+- 접근성:
+- 성능:
+- 보안/개인정보:
+- 팀 합의:
+
+15-20분. 검증 범위
+- 타입/린트:
+- 단위/컴포넌트 테스트:
+- E2E/브라우저 확인:
+- 접근성 확인:
+- 성능 확인:
+- QA 확인:
+
+20-25분. 일정 범위
+- 탐색:
+- AI 초안:
+- 통합:
+- 검증:
+- 리뷰 반영:
+- 예상 범위:
+
+25-30분. 재산정 조건
+- 재산정 시점:
+- 재산정에 필요한 정보:
+- 담당자:
+- 다음 회의/체크포인트:
+```
+
+회의 결과는 다음처럼 짧게 남긴다.
+
+```text
+결정:
+
+AI 사용 범위:
+
+남은 불확실성:
+
+일정:
+
+범위 축소 옵션:
+
+재산정 시점:
+```
+
+## Part별 실습 과제 빠른 참조
+
+각 Part를 읽은 뒤에는 다음 과제를 수행한다. 과제의 자세한 설명은 각 Part 마지막 장에 있다.
+
+```text
+Part 1. AI 이후의 프론트엔드
+- 실제 작업 하나를 탐색, 초안, 검증, 보고 단계로 나눈다.
+- 큰 지시문과 단계별 지시문을 비교한다.
+- 검증한 항목과 검증하지 못한 항목을 기록한다.
+
+Part 2. 변하지 않는 실행 환경
+- DevTools로 Performance, Network, Application 기록을 확인한다.
+- 브라우저 저장소와 API 요청의 경계를 설명한다.
+- AI가 만든 리뷰 질문을 실제 브라우저 기록으로 보정한다.
+
+Part 3. 복잡한 애플리케이션을 다루는 설계
+- 기능 하나의 상태를 지역, 공유 UI, 서버, URL, 파생 상태로 분류한다.
+- API 타입과 UI 타입을 분리한다.
+- 가능한 UI 상태를 union type이나 상태 머신으로 표현한다.
+
+Part 4. 코드를 읽고 통제하는 능력
+- AI가 만든 나쁜 초안 diff를 리뷰한다.
+- 요구사항, 패턴, 상태, 접근성, 성능, 보안 코멘트를 작성한다.
+- 테스트 가능한 위험과 수동 확인이 필요한 위험을 분리한다.
+
+Part 5. AI와 공생하는 개발자
+- 기능 하나의 작업 헌장, 일정 산정, AI 지시문, 검증 기록을 하나로 묶는다.
+- AI가 한 일과 사람이 판단한 일을 분리해 설명한다.
+- 다음 12주 학습 계획에 반영할 기본기 하나를 정한다.
+```
+
 ## Product Search Lab 실행
 
-15장의 사례 연구를 코드로 확인하려면 다음 lab을 실행한다.
+16장의 사례 연구를 코드로 확인하려면 다음 TypeScript lab을 실행한다.
 
 ```bash
 cd frontend-ai-era/labs/product-search-state
 ../../../prompt-harness/labs/contract-harness/node_modules/.bin/tsc -p tsconfig.json
 node --test test/*.test.mjs
+```
+
+브라우저 UI 흐름을 확인하려면 다음 파일을 연다.
+
+```text
+frontend-ai-era/labs/product-search-ui/index.html
 ```
 
 lab의 테스트는 다음 계약을 검증한다.
@@ -250,3 +363,4 @@ lab의 테스트는 다음 계약을 검증한다.
 - OWASP Cheat Sheet Series: https://cheatsheetseries.owasp.org/
 - Agile Alliance, Estimation: https://www.agilealliance.org/glossary/estimation/
 - Local lab: `frontend-ai-era/labs/product-search-state`
+- Local lab: `frontend-ai-era/labs/product-search-ui`
