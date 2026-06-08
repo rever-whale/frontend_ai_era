@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="ko" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>5. 자바스크립트 런타임과 이벤트 루프 - AI 시대의 프론트엔드 개발자</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-e5b1a043.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-9e11345a.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">AI 시대의 프론트엔드 개발자</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="5-자바스크립트-런타임과-이벤트-루프"><a class="header" href="#5-자바스크립트-런타임과-이벤트-루프">5. 자바스크립트 런타임과 이벤트 루프</a></h1>
+<p>프론트엔드 버그의 상당수는 비동기 흐름을 잘못 이해해서 생긴다. 사용자는 버튼을 클릭하고, 네트워크 요청은 지연되고, 상태는 여러 번 바뀌며, 렌더링은 그 사이에 일어난다. 이 과정을 이해하려면 자바스크립트 런타임과 이벤트 루프를 알아야 한다.</p>
+<p>AI가 만든 코드는 문법적으로는 맞아도 시간의 흐름을 틀릴 수 있다. 요청 A가 먼저 시작했지만 요청 B보다 늦게 끝날 수 있다. 컴포넌트가 사라진 뒤에도 비동기 작업이 상태를 바꾸려 할 수 있다. 사용자가 버튼을 두 번 눌러 같은 요청이 중복 전송될 수 있다. 이런 문제는 타입만으로 잡히지 않는다.</p>
+<h2 id="콜-스택과-실행의-기본"><a class="header" href="#콜-스택과-실행의-기본">콜 스택과 실행의 기본</a></h2>
+<p>자바스크립트는 한 번에 하나의 실행 흐름을 처리한다. 함수가 호출되면 콜 스택에 쌓이고, 함수 실행이 끝나면 스택에서 빠진다. 이 모델은 단순하지만 브라우저 환경에서는 사용자 입력, 네트워크, 타이머, 렌더링 같은 일이 함께 일어나기 때문에 비동기 모델이 필요하다.</p>
+<p>다음 코드를 보자.</p>
+<pre><code class="language-js">console.log("A");
+
+setTimeout(() =&gt; {
+  console.log("B");
+}, 0);
+
+Promise.resolve().then(() =&gt; {
+  console.log("C");
+});
+
+console.log("D");
+</code></pre>
+<p>출력 순서는 <code>A</code>, <code>D</code>, <code>C</code>, <code>B</code>다. <code>setTimeout</code>의 지연 시간이 0이어도 즉시 실행되는 것은 아니다. Promise의 <code>.then</code>은 마이크로태스크로 처리되고, 타이머 콜백은 태스크 큐에서 처리된다. 이 차이를 모르면 UI 업데이트와 비동기 콜백의 순서를 잘못 예상하게 된다.</p>
+<h2 id="태스크와-마이크로태스크"><a class="header" href="#태스크와-마이크로태스크">태스크와 마이크로태스크</a></h2>
+<p>브라우저는 이벤트 루프를 통해 여러 작업을 조율한다. 사용자 클릭, 타이머, 네트워크 콜백 같은 작업은 태스크로 처리된다. Promise callback, queueMicrotask 같은 작업은 마이크로태스크로 처리된다. 보통 하나의 태스크가 끝나면 마이크로태스크 큐가 비워지고, 그다음 브라우저가 렌더링할 기회를 얻는다.</p>
+<p>이 모델은 프론트엔드 코드에서 중요하다. 마이크로태스크를 너무 많이 이어붙이면 브라우저가 렌더링할 기회를 늦게 얻을 수 있다. 반대로 렌더링 이후에 해야 하는 작업을 너무 일찍 실행하면 DOM이 기대한 상태가 아닐 수 있다.</p>
+<p>프레임워크는 이런 세부 사항을 일부 감춰준다. 하지만 감춰준다는 것은 사라졌다는 뜻이 아니다. React의 상태 업데이트, Vue의 nextTick, Svelte의 tick 같은 API도 결국 렌더링 타이밍을 다루기 위한 도구다.</p>
+<h2 id="렌더링과-requestanimationframe"><a class="header" href="#렌더링과-requestanimationframe">렌더링과 requestAnimationFrame</a></h2>
+<p><code>requestAnimationFrame</code>은 브라우저가 다음 페인트 전에 실행할 콜백을 등록하는 API다. 애니메이션이나 화면 측정이 필요한 작업에서 유용하다. 예를 들어 요소를 DOM에 추가한 뒤 실제 크기를 측정하고, 그 측정값으로 애니메이션을 시작해야 할 때 렌더링 타이밍을 고려해야 한다.</p>
+<p>AI가 애니메이션이나 스크롤 동작을 구현할 때 단순히 <code>setTimeout</code>을 사용하는 경우가 있다. 때로는 충분하지만, 화면 갱신과 맞물린 작업에서는 <code>requestAnimationFrame</code>이 더 적절할 수 있다. 중요한 것은 API 이름을 외우는 것이 아니라 “이 작업은 브라우저의 렌더링 타이밍과 어떤 관계가 있는가“를 묻는 것이다.</p>
+<h2 id="비동기-요청과-race-condition"><a class="header" href="#비동기-요청과-race-condition">비동기 요청과 race condition</a></h2>
+<p>검색 자동완성을 생각해보자. 사용자가 <code>r</code>, <code>re</code>, <code>rea</code>, <code>react</code>를 빠르게 입력하면 여러 요청이 순서대로 시작될 수 있다. 하지만 응답은 시작한 순서대로 돌아오지 않는다. <code>rea</code> 요청이 <code>react</code> 요청보다 늦게 끝나면 오래된 결과가 최신 화면을 덮어쓸 수 있다.</p>
+<p>이 문제를 race condition이라고 부른다. AI가 만든 검색 코드는 종종 다음처럼 단순하다.</p>
+<pre><code class="language-js">async function onSearch(keyword) {
+  setLoading(true);
+  const result = await searchProducts(keyword);
+  setItems(result.items);
+  setLoading(false);
+}
+</code></pre>
+<p>이 코드는 성공 케이스에서는 잘 작동한다. 그러나 요청 취소, 오래된 응답 무시, 컴포넌트 unmount, 에러 상태를 고려하지 않는다. 실무에서는 다음 중 하나 이상의 전략이 필요하다.</p>
+<ul>
+<li>AbortController로 이전 요청을 취소한다.</li>
+<li>요청 id를 기록해 최신 요청의 응답만 반영한다.</li>
+<li>TanStack Query나 SWR 같은 서버 상태 도구에 캐시와 동기화를 맡긴다.</li>
+<li>입력값 변경과 실제 요청 사이에 debounce를 둔다.</li>
+</ul>
+<p>AI에게 검색 기능을 만들게 할 때는 “빠른 입력에서 오래된 응답이 최신 결과를 덮어쓰지 않게 해줘“라고 명시해야 한다.</p>
+<h2 id="stale-closure"><a class="header" href="#stale-closure">stale closure</a></h2>
+<p>프론트엔드에서 자주 생기는 또 다른 문제는 stale closure다. 함수가 만들어진 시점의 값을 기억하고, 나중에 실행될 때 최신 값을 보지 못하는 상황이다. React 훅을 사용하는 코드에서 특히 자주 마주친다.</p>
+<p>예를 들어 interval 안에서 상태를 읽는 코드가 처음 렌더링의 값을 계속 참조할 수 있다. 이벤트 리스너를 등록하면서 최신 props나 state를 반영하지 못할 수도 있다. AI가 effect dependency를 대충 비워두거나, lint 경고를 피하려고 의존성을 제거하면 이런 문제가 생긴다.</p>
+<p>stale closure를 피하려면 다음 질문을 해야 한다.</p>
+<ul>
+<li>이 콜백은 언제 만들어지고 언제 실행되는가?</li>
+<li>콜백 안에서 읽는 값은 최신이어야 하는가?</li>
+<li>의존성 배열이 실제 의존성을 반영하는가?</li>
+<li>ref를 써야 하는 상황인가, 아니면 구조를 바꿔야 하는가?</li>
+</ul>
+<p>AI가 만든 훅 코드는 반드시 effect dependency와 cleanup을 확인해야 한다.</p>
+<h2 id="중복-제출과-사용자-입력"><a class="header" href="#중복-제출과-사용자-입력">중복 제출과 사용자 입력</a></h2>
+<p>폼 제출도 비동기 흐름의 전형적인 문제다. 사용자가 저장 버튼을 두 번 누르면 요청이 두 번 나갈 수 있다. 첫 번째 요청은 실패하고 두 번째 요청은 성공할 수도 있다. 낙관적 업데이트를 했다가 실패했을 때 UI를 되돌리지 않을 수도 있다.</p>
+<p>좋은 폼 제출 흐름은 다음 상태를 명시적으로 다룬다.</p>
+<ul>
+<li>idle</li>
+<li>validating</li>
+<li>submitting</li>
+<li>success</li>
+<li>error</li>
+</ul>
+<p>상태를 단순히 <code>isLoading</code> 하나로 끝내면 에러 메시지, 중복 클릭 방지, 재시도, 제출 후 이동 같은 흐름이 뒤엉킨다. AI가 만든 코드가 <code>try/catch</code>와 <code>setLoading(false)</code>만으로 끝난다면, 실제 사용자 흐름을 충분히 다루는지 확인해야 한다.</p>
+<h2 id="취소와-cleanup"><a class="header" href="#취소와-cleanup">취소와 cleanup</a></h2>
+<p>프론트엔드 코드는 컴포넌트 생명주기와 함께 움직인다. 사용자가 페이지를 떠나면 진행 중인 요청은 더 이상 필요 없을 수 있다. 모달이 닫히면 이벤트 리스너를 제거해야 한다. 타이머를 만들었다면 cleanup해야 한다.</p>
+<p>AbortController는 fetch 요청을 취소할 때 유용하다. effect cleanup은 이벤트 리스너, interval, observer를 정리할 때 필요하다. AI는 종종 “추가하는 코드“는 잘 만들지만 “정리하는 코드“를 빼먹는다. 프론트엔드에서는 빼먹은 cleanup이 메모리 누수, 중복 이벤트, 이상한 상태 업데이트로 이어질 수 있다.</p>
+<h2 id="상태-전이를-명시하기"><a class="header" href="#상태-전이를-명시하기">상태 전이를 명시하기</a></h2>
+<p>비동기 UI는 시간에 따라 상태가 바뀐다. 이 상태 전이를 코드에서 명시하면 버그를 줄일 수 있다. 단순한 기능은 boolean 몇 개로 충분하지만, 복잡한 기능은 union type이나 state machine이 더 적합할 수 있다.</p>
+<p>예를 들어 다음 타입은 <code>loading</code>과 <code>error</code>가 동시에 true가 되는 모순을 막는다.</p>
+<pre><code class="language-ts">type AsyncState&lt;T&gt; =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "success"; data: T }
+  | { status: "error"; error: Error };
+</code></pre>
+<p>AI에게 “로딩과 에러 상태를 처리해줘“라고 말하면 여러 boolean을 만들 수 있다. “상태가 서로 배타적인 union type으로 표현되게 해줘“라고 말하면 더 안전한 구조를 얻기 쉽다.</p>
+<h2 id="ai-생성-코드-리뷰-질문"><a class="header" href="#ai-생성-코드-리뷰-질문">AI 생성 코드 리뷰 질문</a></h2>
+<p>자바스크립트 런타임과 이벤트 루프 관점에서 AI가 만든 코드를 리뷰할 때는 다음을 확인한다.</p>
+<ul>
+<li>요청이 취소 가능하거나 오래된 응답을 무시하는가?</li>
+<li>컴포넌트가 사라진 뒤 상태를 업데이트하지 않는가?</li>
+<li>이벤트 리스너, 타이머, observer가 cleanup되는가?</li>
+<li>effect dependency가 실제 의존성을 반영하는가?</li>
+<li>중복 클릭과 중복 제출을 막는가?</li>
+<li>로딩, 성공, 실패, 취소 상태가 구분되는가?</li>
+<li>렌더링마다 비싼 비동기 작업을 새로 시작하지 않는가?</li>
+<li>Promise rejection이 조용히 사라지지 않는가?</li>
+</ul>
+<p>비동기 버그는 재현이 어렵고, 사용자의 기기와 네트워크 상태에 따라 다르게 나타난다. 그래서 더더욱 처음부터 시간의 흐름을 설계해야 한다. AI는 코드를 빠르게 만들지만, 시간의 의미는 개발자가 붙잡아야 한다.</p>
+<h2 id="출처"><a class="header" href="#출처">출처</a></h2>
+<ul>
+<li>MDN Web Docs, Event loop: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop</li>
+<li>MDN Web Docs, Promise: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</li>
+<li>MDN Web Docs, AbortController: https://developer.mozilla.org/en-US/docs/Web/API/AbortController</li>
+<li>MDN Web Docs, requestAnimationFrame: https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="04_browser_rendering_pipeline.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="06_network_security_storage.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="04_browser_rendering_pipeline.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="06_network_security_storage.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

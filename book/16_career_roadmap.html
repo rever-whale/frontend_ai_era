@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html lang="ko" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>17. 프론트엔드 개발자의 학습 로드맵 - AI 시대의 프론트엔드 개발자</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-e5b1a043.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-9e11345a.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">AI 시대의 프론트엔드 개발자</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="17-프론트엔드-개발자의-학습-로드맵"><a class="header" href="#17-프론트엔드-개발자의-학습-로드맵">17. 프론트엔드 개발자의 학습 로드맵</a></h1>
+<p>AI 시대의 학습 로드맵은 “더 많은 도구를 따라잡기“가 아니다. 오히려 도구가 바뀌어도 남는 층을 먼저 세우고, 그 위에 프레임워크와 AI 워크플로를 얹어야 한다. 프론트엔드 생태계는 빠르게 바뀌지만, 브라우저와 네트워크와 사용자 경험의 기본 문제는 오래 남는다.</p>
+<p>AI는 학습의 방식도 바꾼다. 모르는 것을 검색하고 예제를 찾는 속도는 빨라졌다. 하지만 빠른 답은 깊은 이해를 보장하지 않는다. AI에게 물어서 해결한 문제를 다시 설명할 수 없다면, 그 지식은 아직 내 것이 아니다.</p>
+<h2 id="네-개의-학습-층"><a class="header" href="#네-개의-학습-층">네 개의 학습 층</a></h2>
+<p>프론트엔드 개발자의 학습은 네 개의 층으로 볼 수 있다.</p>
+<p>첫째, 실행 환경이다. HTML, CSS, JavaScript, TypeScript, 브라우저 렌더링, 이벤트 루프, HTTP, 캐시, 보안, 스토리지 같은 주제다. 이 층은 프레임워크보다 아래에 있다. 이 층이 약하면 프레임워크가 감춰주는 부분을 벗어났을 때 문제를 설명하지 못한다.</p>
+<p>둘째, 제품 구현이다. 컴포넌트, 상태, 라우팅, 폼, 데이터 패칭, 접근성, 성능, 에러 처리, 디자인 시스템을 다룬다. 여기서는 사용자 흐름을 작동하는 화면으로 바꾸는 능력이 중요하다.</p>
+<p>셋째, 시스템 설계다. feature 경계, 상태 모델, 타입 계약, 테스트 전략, 배포와 관찰, 팀의 코드 규칙을 다룬다. 미드레벨 이후의 성장에서 이 층이 중요해진다. 코드 한 조각보다 코드가 들어갈 구조를 보는 능력이다.</p>
+<p>넷째, AI 협업이다. 요구사항 분해, 작업 헌장 작성, 코드 읽기, 자동생성 코드 리뷰, 검증 루프, 에이전트 운영, 프로젝트 지식베이스 관리가 포함된다. AI 협업은 별도의 얇은 기술이 아니라 앞의 세 층을 바탕으로 한다.</p>
+<h2 id="주니어-개발자의-로드맵"><a class="header" href="#주니어-개발자의-로드맵">주니어 개발자의 로드맵</a></h2>
+<p>주니어 개발자는 AI를 쓰되 기본 구현 경험을 건너뛰면 안 된다. 직접 작은 기능을 만들어보고, 브라우저에서 깨뜨려보고, 테스트를 작성해보고, 버그를 고쳐보는 경험이 필요하다.</p>
+<p>우선순위는 다음과 같다.</p>
+<ul>
+<li>HTML과 CSS의 기본 의미를 익힌다.</li>
+<li>JavaScript의 비동기와 이벤트 흐름을 이해한다.</li>
+<li>TypeScript로 props, 상태, API 응답 타입을 표현한다.</li>
+<li>React/Vue/Svelte 중 하나를 골라 컴포넌트와 상태를 익힌다.</li>
+<li>form, list, modal, tab, search 같은 흔한 UI를 직접 구현한다.</li>
+<li>Testing Library로 사용자 행동 중심 테스트를 작성한다.</li>
+<li>AI가 만든 코드를 그대로 쓰기보다 한 줄씩 설명해본다.</li>
+</ul>
+<p>주니어에게 좋은 AI 사용법은 “답을 복사하기“가 아니라 “내가 쓴 코드를 설명받고 반례를 찾기“다. 예를 들어 “이 코드에서 race condition이 생길 수 있는지 봐줘” 또는 “이 컴포넌트의 접근성 문제를 찾아줘“처럼 검토 도구로 쓰면 좋다.</p>
+<h2 id="미드레벨-개발자의-로드맵"><a class="header" href="#미드레벨-개발자의-로드맵">미드레벨 개발자의 로드맵</a></h2>
+<p>미드레벨 개발자는 기능을 만드는 능력에서 코드베이스를 읽고 변경 범위를 통제하는 능력으로 성장해야 한다. 이제 중요한 것은 “작동하게 만들기“만이 아니라 “팀의 구조 안에서 안전하게 바꾸기“다.</p>
+<p>우선순위는 다음과 같다.</p>
+<ul>
+<li>서버 상태, URL 상태, 지역 상태를 분리해서 설계한다.</li>
+<li>API 응답과 UI 모델 사이의 adapter를 만든다.</li>
+<li>컴포넌트 합성과 커스텀 훅의 책임을 명확히 한다.</li>
+<li>discriminated union으로 복잡한 상태를 표현한다.</li>
+<li>실패 케이스를 포함한 테스트를 작성한다.</li>
+<li>PR에서 변경 이유와 검증 결과를 설명한다.</li>
+<li>AI에게 탐색, 계획, 구현, 검증을 나눠 요청한다.</li>
+</ul>
+<p>미드레벨에게 AI는 생산성 증폭기다. 하지만 코드베이스 지도를 갖고 있어야 AI를 제대로 쓸 수 있다. 관련 파일을 모르고, 상태 위치를 모르고, 테스트 전략을 모르면 AI의 제안을 평가할 수 없다.</p>
+<h2 id="시니어와-리드의-로드맵"><a class="header" href="#시니어와-리드의-로드맵">시니어와 리드의 로드맵</a></h2>
+<p>시니어와 리드는 개인 생산성을 넘어 팀의 작업 방식을 설계해야 한다. AI 도구를 도입하면 팀의 코드 양, 리뷰 방식, 테스트 중요도, 문서화 방식이 바뀐다. 이 변화를 방치하면 속도는 늘고 품질은 떨어질 수 있다.</p>
+<p>우선순위는 다음과 같다.</p>
+<ul>
+<li>팀의 AI 사용 원칙을 정한다.</li>
+<li>프로젝트 지식베이스와 작업 템플릿을 만든다.</li>
+<li>자동생성 코드 리뷰 기준을 문서화한다.</li>
+<li>테스트와 CI를 AI 시대의 안전장치로 강화한다.</li>
+<li>새 의존성, 보안, 개인정보 관련 승인 기준을 정한다.</li>
+<li>대규모 리팩터링을 에이전트와 함께 수행하는 절차를 만든다.</li>
+<li>주니어가 AI 답변을 비판적으로 읽도록 교육한다.</li>
+</ul>
+<p>시니어의 역할은 AI를 금지하거나 무조건 장려하는 것이 아니다. 팀이 AI를 써도 코드 품질과 제품 책임이 흐려지지 않게 운영 체계를 만드는 것이다.</p>
+<h2 id="12주-학습-계획"><a class="header" href="#12주-학습-계획">12주 학습 계획</a></h2>
+<p>이 책을 바탕으로 12주 학습 계획을 만든다면 다음과 같이 진행할 수 있다.</p>
+<p>1-2주차: 브라우저와 JavaScript 런타임<br>DOM, CSSOM, 렌더링, 이벤트 루프, Promise, AbortController를 작은 예제로 실습한다.</p>
+<p>3-4주차: 프레임워크와 상태<br>선택한 프레임워크에서 list, form, modal, search 화면을 만들고 지역 상태, URL 상태, 서버 상태를 분리한다.</p>
+<p>5-6주차: 타입과 계약<br>API 응답 타입, UI view model, adapter, schema validation, discriminated union을 연습한다.</p>
+<p>7-8주차: 코드 읽기와 리뷰<br>기존 오픈소스 또는 팀 코드의 진입점, 데이터 흐름, 상태 위치, 테스트를 지도로 정리한다. AI에게도 같은 작업을 시키고 결과를 비교한다.</p>
+<p>9-10주차: 테스트와 품질<br>Testing Library, Playwright, 접근성 점검, 성능 기본 측정을 실습한다. 성공 케이스보다 실패 케이스를 의식적으로 추가한다.</p>
+<p>11-12주차: AI 협업 루프<br>작업 헌장 작성, 에이전트 탐색/계획/구현/검증 분리, 자동생성 코드 리뷰, 결과 보고 형식을 반복한다.</p>
+<h2 id="학습의-기준은-설명-가능성이다"><a class="header" href="#학습의-기준은-설명-가능성이다">학습의 기준은 설명 가능성이다</a></h2>
+<p>AI 시대에는 “해결했다“와 “이해했다“를 구분해야 한다. AI 도움으로 버그를 고쳤더라도 다음 질문에 답할 수 있어야 한다.</p>
+<ul>
+<li>원인은 무엇이었는가?</li>
+<li>왜 이 수정이 문제를 해결하는가?</li>
+<li>다른 해결책은 무엇이었고 왜 선택하지 않았는가?</li>
+<li>이 변경이 깨뜨릴 수 있는 것은 무엇인가?</li>
+<li>어떤 검증을 했고 무엇을 하지 못했는가?</li>
+</ul>
+<p>이 질문에 답할 수 있다면 AI와 함께 배운 것이다. 답할 수 없다면 AI가 해결한 것을 잠시 빌린 것이다.</p>
+<h2 id="앞으로-남는-개발자"><a class="header" href="#앞으로-남는-개발자">앞으로 남는 개발자</a></h2>
+<p>AI는 프론트엔드 개발자의 역할을 없애기보다 더 명확하게 만든다. 앞으로의 프론트엔드 개발자는 코드를 많이 쓰는 사람보다 좋은 질문을 만들고, 좋은 구조를 유지하고, 빠른 생성과 엄격한 검증 사이의 균형을 잡는 사람이 된다.</p>
+<p>프레임워크는 바뀐다. 도구도 바뀐다. 하지만 브라우저는 계속 코드를 실행하고, 사용자는 계속 화면을 사용하며, 팀은 계속 변경 가능한 시스템을 유지해야 한다. 이 사실이 프론트엔드 개발자의 기본기를 오래 살아남게 만든다.</p>
+<h2 id="출처"><a class="header" href="#출처">출처</a></h2>
+<ul>
+<li>MDN Web Docs: https://developer.mozilla.org/</li>
+<li>web.dev: https://web.dev/</li>
+<li>TypeScript Handbook: https://www.typescriptlang.org/docs/</li>
+<li>Stack Overflow Developer Survey 2025: https://survey.stackoverflow.co/2025/</li>
+<li>GitHub Octoverse 2025: https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="15_case_study_feature_build.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="appendix_a_checklists.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="15_case_study_feature_build.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="appendix_a_checklists.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

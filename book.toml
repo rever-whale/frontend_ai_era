@@ -1,0 +1,11 @@
+[book]
+title = "AI 시대의 프론트엔드 개발자"
+authors = ["study-vault"]
+language = "ko"
+src = "src"
+
+[build]
+build-dir = "book"
+
+[output.html]
+site-url = "/frontend-ai-era/"
