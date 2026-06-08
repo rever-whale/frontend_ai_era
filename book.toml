@@ -8,4 +8,5 @@ src = "src"
 build-dir = "book"
 
 [output.html]
+git-repository-url = "https://github.com/rever-whale/frontend-ai-era"
 site-url = "/frontend-ai-era/"
