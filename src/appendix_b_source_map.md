@@ -7,6 +7,7 @@
 - Stack Overflow Developer Survey 2025: https://survey.stackoverflow.co/2025/
 - GitHub Octoverse 2025: https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/
 - JetBrains State of Developer Ecosystem 2025: https://blog.jetbrains.com/en/research/2025/10/state-of-developer-ecosystem-2025/
+- Book cover image: `frontend-ai-era/src/cover.png`
 
 ## 1장. 프론트엔드 개발자는 무엇이 달라졌는가
 
